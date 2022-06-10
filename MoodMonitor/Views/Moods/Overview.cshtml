@@ -1,0 +1,67 @@
+﻿@using Newtonsoft.Json
+@{
+	ViewData["Title"] = "Moods overview";
+}
+
+<h1>Moods overview</h1>
+
+<canvas id="moodChart"></canvas>
+
+<script src="lib/ChartJS/Chart.js"></script>
+
+<script>
+Chart.defaults.global.defaultFontColor = "#fff";
+new Chart("moodChart", {
+	type: "line",
+	data: {
+		labels: @Html.Raw(JsonConvert.SerializeObject(ViewData["Dates"])),
+		datasets: [
+			{
+				label: "Happiness",
+				data: @Html.Raw(JsonConvert.SerializeObject(ViewData["Happiness"])),
+				borderColor: "#cb9634",
+				fill: false
+			}, {
+				label: "Sadness",
+				data: @Html.Raw(JsonConvert.SerializeObject(ViewData["Sadness"])),
+                borderColor: "#3c9dc3",
+                fill: false
+			}, {
+				label: "Fear",
+               	data: @Html.Raw(JsonConvert.SerializeObject(ViewData["Fear"])),
+                borderColor: "#6fbb44",
+                fill: false
+            }, {
+				label: "Anger",
+               	data: @Html.Raw(JsonConvert.SerializeObject(ViewData["Anger"])),
+                borderColor: "#d02f40",
+                fill: false
+           	}, {
+				label: "Stress",
+               	data: @Html.Raw(JsonConvert.SerializeObject(ViewData["Stress"])),
+                borderColor: "#c936ae",
+                fill: false
+            }, {
+				label: "Emptiness",
+               	data: @Html.Raw(JsonConvert.SerializeObject(ViewData["Emptiness"])),
+                borderColor: "grey",
+                fill: false
+            }
+		]
+	},
+	options: {
+		legend: {display: true},
+		scales: {
+			yAxes: [{
+            	display: true,
+            	ticks: {
+					beginAtZero: true, 
+					steps: 10, 
+					stepValue: 5,
+					max: 100
+				}
+            }]
+		}
+	}
+})
+</script>

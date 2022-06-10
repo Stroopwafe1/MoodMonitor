@@ -1,0 +1,57 @@
+@model MoodMonitor.Models.MoodModel;
+
+@{
+	ViewData["Title"] = "Add Mood";
+}
+
+<h1>Add Mood</h1>
+
+<hr/>
+<div class="row">
+	<div class="col-md-4">
+		<form method="post" asp-action="Post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Happiness" class="control-label"></label>
+				<input asp-for="Happiness" class="custom" min="1" max="100" step="1" type="range"/>
+				<span asp-validation-for="Happiness" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Sadness" class="control-label"></label>
+				<input asp-for="Sadness" class="custom" min="1" max="100" step="1" type="range"/>
+				<span asp-validation-for="Sadness" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Fear" class="control-label"></label>
+				<input asp-for="Fear" class="custom" min="1" max="100" step="1" type="range"/>
+				<span asp-validation-for="Fear" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Anger" class="control-label"></label>
+				<input asp-for="Anger" class="custom" min="1" max="100" step="1" type="range"/>
+				<span asp-validation-for="Anger" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Stress" class="control-label"></label>
+				<input asp-for="Stress" class="custom" min="1" max="100" step="1" type="range"/>
+				<span asp-validation-for="Stress" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Emptiness" class="control-label"></label>
+				<input asp-for="Emptiness" class="custom" min="1" max="100" step="1" type="range"/>
+				<span asp-validation-for="Emptiness" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Notes" class="control-label"></label>
+				<input asp-for="Notes" class="form-control"/>
+				<span asp-validation-for="Notes" class="text-danger"></span>
+			</div>
+			<div class="form-group visually-hidden">
+				<input asp-for="UserID" type="text" value="@ViewData["User"]">
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Create" class="btn btn-primary"/>
+			</div>
+		</form>
+	</div>
+</div>
